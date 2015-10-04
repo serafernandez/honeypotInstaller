@@ -17,16 +17,25 @@ function borrarCarpeta {
 }
 
 function glastopf {
+    echo "----------------------------------------------------------------------------"
+    echo "Instalo glastopf"
+    echo "----------------------------------------------------------------------------"
     crearCarpeta glastopf
     wget "$1/api/script/?text=true&script_id=9" -O deploy.sh && sudo bash deploy.sh $1 $2
 }
 
 function kippo {
+    echo "----------------------------------------------------------------------------"
+    echo "Instalo kippo"
+    echo "----------------------------------------------------------------------------"
     crearCarpeta kippo
     wget "$1/api/script/?text=true&script_id=5" -O deploy.sh && sudo bash deploy.sh $1 $2
 }
 
 function conpot {
+    echo "----------------------------------------------------------------------------"
+    echo "Instalo conpot"
+    echo "----------------------------------------------------------------------------"
     crearCarpeta conpot
     wget "$1/api/script/?text=true&script_id=4" -O deploy.sh && sudo bash deploy.sh $1 $2
 }
@@ -57,21 +66,12 @@ else
     else
         for arg in $@ ; do
             if [ $arg == "glastopf" ] ; then
-                echo "----------------------------------------------------------------------------"
-                echo "Instalo glastopf"
-                echo "----------------------------------------------------------------------------"
                 glastopf $1 $2
             fi
             if [ $arg == "kippo" ] ; then
-                echo "----------------------------------------------------------------------------"
-                echo "Instalo kippo"
-                echo "----------------------------------------------------------------------------"
                 kippo $1 $2
             fi
             if [ $arg == "conpot" ] ; then
-                echo "----------------------------------------------------------------------------"
-                echo "Instalo conpot"
-                echo "----------------------------------------------------------------------------"
                 conpot $1 $2
             fi
         done
