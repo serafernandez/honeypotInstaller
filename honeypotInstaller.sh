@@ -12,7 +12,7 @@ function crearCarpeta {
 function borrarCarpeta {
     cd ~
     if [ -e $1 ] ; then
-        rm -rf $1
+        sudo rm -rf $1
     fi
 }
 
@@ -35,6 +35,9 @@ function finish {
     borrarCarpeta glastopf
     borrarCarpeta kippo
     borrarCarpeta conpot
+    echo "----------------------------------------------------------------------------"
+    echo "Termino de instalar"
+    echo "----------------------------------------------------------------------------"
     exit 0
 }
 
