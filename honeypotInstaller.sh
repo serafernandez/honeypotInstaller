@@ -16,6 +16,22 @@ function borrarCarpeta {
     fi
 }
 
+function dionaea {
+    echo "----------------------------------------------------------------------------"
+    echo "Instalo dionaea"
+    echo "----------------------------------------------------------------------------"
+    crearCarpeta dionaea
+    wget "$1/api/script/?text=true&script_id=7" -O deploy.sh && sudo bash deploy.sh $1 $2
+}
+
+function snort {
+    echo "----------------------------------------------------------------------------"
+    echo "Instalo snort"
+    echo "----------------------------------------------------------------------------"
+    crearCarpeta snort
+    wget "$1/api/script/?text=true&script_id=8" -O deploy.sh && sudo bash deploy.sh $1 $2
+}
+
 function glastopf {
     echo "----------------------------------------------------------------------------"
     echo "Instalo glastopf"
@@ -44,6 +60,8 @@ function finish {
     borrarCarpeta glastopf
     borrarCarpeta kippo
     borrarCarpeta conpot
+    borrarCarpeta snort
+    borrarCarpeta dionaea
     echo "----------------------------------------------------------------------------"
     echo "Termino de instalar"
     echo "----------------------------------------------------------------------------"
@@ -62,6 +80,8 @@ else
         glastopf $1 $2
         kippo $1 $2
         conpot $1 $2
+        snort $1 $2
+        dionaea $1 $2
         finish
     else
         for arg in $@ ; do
@@ -74,6 +94,13 @@ else
             if [ $arg == "conpot" ] ; then
                 conpot $1 $2
             fi
+            if [ $arg == "snort" ] ; then
+                snort $1 $2
+            fi
+            if [ $arg == "dionaea" ] ; then
+                dionaea $1 $2
+            fi
         done
+        finish
     fi
 fi
